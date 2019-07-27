@@ -1,0 +1,167 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.jam.train'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation group:'org.projectlombok',name:'lombok',version:'1.18.8'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.5.2'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+//Groovy
+
+
+//创建任务的三种方式
+task hello {
+    doLast {
+        println 'Hello World'
+    }
+}
+
+
+def Task hello2 = task(hello2)
+hello2.doLast {
+    println 'hello2'
+}
+
+
+tasks.create(name: 'hello3') {
+    doLast {
+        println 'hello3'
+    }
+}
+
+//任务依赖
+task mydep(dependsOn: hello) {
+    doLast {
+        println ' dep world'
+    }
+}
+
+//动态任务
+/*
+ * 单引号与双引号不同
+ */
+3.times {
+    number ->
+        task "task$number" {
+            doLast {
+               println "task $number"
+            }
+        }
+}
+
+//任务分组
+task myGroup {
+    group 'build'
+    description '这是构建分组'
+
+    doLast{
+        println " 分组：$group"
+        println " 描述： $description"
+    }
+}
+
+task printGroupInfo(dependsOn:myGroup){
+//    doLast{
+//
+//    }
+}
+
+
+//常用命令
+/*
+ *   -q taskname
+ *   -q tasks --all 显示所有任务
+ *   -q taskname -x taskname 排除任务
+ *   获取任务帮助信息 -q hello --task taskname
+ */
+
+
+//开始学些Groovy
+
+def a = 1
+def int b = 2
+def c = 'string'
+
+def add(int a,int b){
+    return a + b
+}
+
+//定义返回类型的方法可以省略def  如果没有return 就返回最后一行的执行结果
+ int minus(a,b){
+     b - a
+}
+
+
+task method {
+    doLast{
+       println add(a,b)
+       println  minus(a,b)
+    }
+}
+
+//Groovy中的类
+class Person{
+
+    private   int age = 0
+    private   String name = 'Luly'
+
+    def changeAge(int age){
+       this.age += age
+    }
+}
+
+task tcls{
+    Person p = new Person()
+    doLast{
+        p.changeAge(10)
+        println p.getAge()
+    }
+}
+
+//单双引号的区别是  双引号支持差值 $
+// 还有保留换行和缩进的三引号字符串
+
+
+// Closure 闭包
+
+def myClosure = {return it}
+
+def Closure myClosure2 = {int _a,int _b -> _a + _b}
+
+task testClosure {
+    doLast{
+        println myClosure(1)
+        println myClosure.call(1)
+
+        println myClosure2.call(1,2)
+    }
+}
+
+
+
+
