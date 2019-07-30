@@ -33,18 +33,19 @@
     </environments>
 
     <!-- mappers告诉了MyBatis去哪里找持久化类的映射文件 -->
-    <!--
-    <mappers>
-        <mapper resource="cn/mybatis/mydemo/mapper/CardMapper.xml" />
-        <mapper resource="cn/mybatis/mydemo/mapper/PersonMapper.xml" />
-    </mappers>
-    -->
+
+<!--    <mappers>-->
+<!--        <mapper resource="mapper/AdminMapper.xml" />-->
+<!--        <mapper resource="mapper/CourseMapper.xml" />-->
+<!--        <mapper resource="mapper/ScoreMapper.xml" />-->
+<!--    </mappers>-->
+
 
     <!-- mappers告诉了MyBatis去哪里找持久化类的映射类（注解形式） -->
     <mappers>
-        <mapper class="cn.mybatis.mydemo6.mapper.ArticleMapper"/>
-        <mapper class="cn.mybatis.mydemo6.mapper.OrderMapper"/>
-        <mapper class="cn.mybatis.mydemo6.mapper.UserMapper"/>
+        <mapper class="com.jam.train.gradbatis.mybatis.mapper.AdminMapper"/>
+        <mapper class="com.jam.train.gradbatis.mybatis.mapper.CourseMapper"/>
+        <mapper class="com.jam.train.gradbatis.mybatis.mapper.ScoreMapper"/>
     </mappers>
 
 </configuration>
