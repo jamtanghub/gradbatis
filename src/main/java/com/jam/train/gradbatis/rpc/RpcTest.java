@@ -5,6 +5,14 @@ import com.jam.train.gradbatis.rpc.server.IHelloService;
 
 import java.net.InetSocketAddress;
 
+
+/**
+ * 手把手教你写一个RPC
+ * https://www.cnblogs.com/dwlovelife/p/10320505.html
+ *
+ *
+ */
+
 public class RpcTest {
 
     public static void main(String[] args) {

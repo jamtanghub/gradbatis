@@ -6,8 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class GradbatisApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GradbatisApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GradbatisApplication.class, args);
+
+
+
+    }
 
 }
