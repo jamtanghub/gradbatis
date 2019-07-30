@@ -34,19 +34,20 @@
 
     <!-- mappers告诉了MyBatis去哪里找持久化类的映射文件 -->
 
-<!--    <mappers>-->
-<!--        <mapper resource="mapper/AdminMapper.xml" />-->
-<!--        <mapper resource="mapper/CourseMapper.xml" />-->
-<!--        <mapper resource="mapper/ScoreMapper.xml" />-->
-<!--    </mappers>-->
+    <mappers>
+        <mapper resource="mapper/CountryMapper.xml" />
+        <mapper resource="mapper/SysPrvilegeMapper.xml" />
+        <mapper resource="mapper/SysRoleMapper.xml" />
+        <mapper resource="mapper/SysRolePrivilegeMapper.xml" />
+        <mapper resource="mapper/SysUserMapper.xml"/>
+        <mapper resource="mapper/SysUserRoleMapper.xml" />
+    </mappers>
 
 
     <!-- mappers告诉了MyBatis去哪里找持久化类的映射类（注解形式） -->
-    <mappers>
-        <mapper class="com.jam.train.gradbatis.mybatis.mapper.AdminMapper"/>
-        <mapper class="com.jam.train.gradbatis.mybatis.mapper.CourseMapper"/>
-        <mapper class="com.jam.train.gradbatis.mybatis.mapper.ScoreMapper"/>
-    </mappers>
+<!--    <mappers>-->
+<!--        <mapper class="com.jam.train.gradbatis.mybatis.mapper.CountryMapper"/>-->
+<!--    </mappers>-->
 
 </configuration>
 
