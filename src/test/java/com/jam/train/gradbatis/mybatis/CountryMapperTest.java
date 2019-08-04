@@ -14,6 +14,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class CountryMapperTest  {
 
@@ -54,6 +55,32 @@ public class CountryMapperTest  {
             SysUserMapper sysUserMapper = sqlSession.getMapper(SysUserMapper.class);
             SysUser user = sysUserMapper.selectByPrimaryKey(1L);
             System.out.println(user.getUserName());
+
+
+        }finally {
+            sqlSession.close();
+        }
+    }
+
+
+    @Test
+    public void allUsers(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try{
+            SysUserMapper sysUserMapper = sqlSession.getMapper(SysUserMapper.class);
+            List<SysUser> list =  sysUserMapper.selectAll();
+
+            //Lambda表达式
+            list.forEach((user)->{
+                System.out.println(user.getUserName());
+            });
+
+            list.forEach(new Consumer<SysUser>() {
+                @Override
+                public void accept(SysUser sysUser) {
+                    System.out.println(sysUser.getUserName());
+                }
+            });
 
 
         }finally {
